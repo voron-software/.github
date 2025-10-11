@@ -2,5 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices", ":automergeAll"
-  ]
+  ],
+  // Reduce extra CI churn
+  "rebaseWhen": "conflicted",
+  "schedule": ["at any time"]
 }
