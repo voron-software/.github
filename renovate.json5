@@ -7,4 +7,10 @@
   "rebaseWhen": "conflicted",    // Reduce extra CI churn
   "schedule": ["at any time"],   // At renovate's discretion
   "minimumReleaseAge": "7 days", // Cooldown to reduce risk of compromised packages
+  "packageRules": [
+    {
+      "matchManagers": ["cargo"],
+      "pinVersions": false
+    },
+  ],
 }
