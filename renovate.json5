@@ -1,16 +1,20 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices", ":automergeAll"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices',
+    ':automergeAll',
   ],
-  
-  "rebaseWhen": "conflicted",    // Reduce extra CI churn
-  "schedule": ["at any time"],   // At renovate's discretion
-  "minimumReleaseAge": "7 days", // Cooldown to reduce risk of compromised packages
-  "packageRules": [
+  rebaseWhen: 'conflicted',
+  schedule: [
+    'at any time',
+  ],
+  minimumReleaseAge: '7 days',
+  packageRules: [
     {
-      "matchManagers": ["cargo"],
-      "pinVersions": false
+      matchManagers: [
+        'cargo',
+      ],
+      rangeStrategy: 'replace',
     },
   ],
 }
