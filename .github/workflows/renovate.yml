@@ -2,17 +2,11 @@ name: Validate Renovate config
 
 on:
   push:
-    paths:
-      - 'renovate.json'
-      - 'renovate.json5'
-      - '.renovaterc'
-      - '.renovaterc.json'
-      - '.renovaterc.yaml'
-      - '.renovaterc.yml'
-      - '.github/renovate.json'
-      - '.github/renovate.json5'
-      - '.github/renovate.yaml'
-      - '.github/renovate.yml'
+    branches: [main]
+    paths: [renovate.json5]
+  pull_request:
+    branches: ["main"]
+    paths: [renovate.json5]
 
 permissions:
   contents: read
