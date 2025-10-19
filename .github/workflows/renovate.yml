@@ -1,4 +1,4 @@
-name: Validate Renovate config
+name: Renovate
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   validate:
-    name: Renovate config validator
+    name: Validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
