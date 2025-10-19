@@ -10,7 +10,7 @@
   ],
   major: {
     dependencyDashboardApproval: false
-  }
+  },
   separateMajorMinor: true,
   separateMultipleMajor: true,
   minimumReleaseAge: '3 days',
