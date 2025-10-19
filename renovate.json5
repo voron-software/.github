@@ -8,7 +8,7 @@
   schedule: [
     'at any time',
   ],
-  minimumReleaseAge: '7 days',
+  minimumReleaseAge: '3 days',
   packageRules: [
     {
       matchManagers: [
