@@ -15,6 +15,7 @@
   },
   separateMajorMinor: true,
   separateMultipleMajor: true,
+  separateMinorPatch: true,
   minimumReleaseAge: '3 days',
   packageRules: [
     {
