@@ -24,5 +24,15 @@
       ],
       rangeStrategy: 'replace',
     },
+    {
+      matchManagers: [
+        'github-actions',
+      ],
+      matchSourceUrlPrefixes: [
+        'https://github.com/github/',
+        'https://github.com/actions/',
+      ],
+      minimumReleaseAge: null,
+    },
   ],
 }
