@@ -3,6 +3,7 @@
   extends: [
     'config:best-practices',
     ':automergeAll',
+    ':lockFileMaintenance',
   ],
   rebaseWhen: 'conflicted',
   schedule: [
