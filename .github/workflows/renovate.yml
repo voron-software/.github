@@ -3,10 +3,20 @@ name: Renovate
 on:
   push:
     branches: [main]
-    paths: [renovate.json5]
+    paths: 
+      - renovate.json5
+      - renovate.json
+      - .github/renovate.json5
+      - .github/renovate.json
+      - .github/workflows/renovate.yml
   pull_request:
     branches: ["main"]
-    paths: [renovate.json5]
+    paths: 
+      - renovate.json5
+      - renovate.json
+      - .github/renovate.json5
+      - .github/renovate.json
+      - .github/workflows/renovate.yml
 
 permissions:
   contents: read
