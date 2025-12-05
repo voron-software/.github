@@ -18,12 +18,19 @@
   },
   addLabels: [
     'dependencies',
-    '{{manager}}'
+    '{{manager}}',
+    '{{updateType}}'
   ],
   separateMajorMinor: true,
   separateMultipleMajor: true,
   separateMinorPatch: true,
   minimumReleaseAge: '3 days',
+  vulnerabilityAlerts: {
+    enabled: true,
+    labels: [
+      'security',
+    ],
+  },
   packageRules: [
     {
       matchManagers: [
