@@ -18,7 +18,8 @@
   },
   addLabels: [
     'dependencies',
-    '{{datasource}}'
+    '{{datasource}}',
+    '{{depType}}'
   ],
   separateMajorMinor: true,
   separateMultipleMajor: true,
