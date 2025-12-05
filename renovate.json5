@@ -16,7 +16,7 @@
   major: {
     dependencyDashboardApproval: false,
   },
-  addLabels: '{{{ toJSON( distinct( depTypes + toArray('dependencies' 'renovate') ) ) }}}'
+  addLabels: "{{{ toJSON( distinct( depTypes + toArray('dependencies' 'renovate') ) ) }}}"
   separateMajorMinor: true,
   separateMultipleMajor: true,
   separateMinorPatch: true,
