@@ -16,6 +16,10 @@
   major: {
     dependencyDashboardApproval: false,
   },
+  addLabels: [
+    'dependencies',
+    '{{datasource}}'
+  ],
   separateMajorMinor: true,
   separateMultipleMajor: true,
   separateMinorPatch: true,
