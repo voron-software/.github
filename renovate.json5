@@ -16,10 +16,7 @@
   major: {
     dependencyDashboardApproval: false,
   },
-  addLabels: [
-    'dependencies',
-    '{{datasource}}'
-  ],
+  addLabels: {{{ toJSON( distinct( depTypes + toArray('dependencies' 'renovate') ) ) }}}
   separateMajorMinor: true,
   separateMultipleMajor: true,
   separateMinorPatch: true,
