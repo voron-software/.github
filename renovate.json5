@@ -18,7 +18,9 @@
   },
   addLabels: [
     'dependencies',
-    '{{manager}}'
+    '{{manager}}',
+    '{{depType}}',
+    '{{updateType}}'
   ],
   separateMajorMinor: true,
   separateMultipleMajor: true,
