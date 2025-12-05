@@ -21,5 +21,14 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Validate Renovate configuration
-        run: npx --yes --package renovate -- renovate-config-validator
+        run: npx renovate-config-validator
