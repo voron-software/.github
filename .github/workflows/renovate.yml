@@ -3,10 +3,20 @@ name: Renovate
 on:
   push:
     branches: [main]
-    paths: [renovate.json5]
+    paths: 
+      - renovate.json5
+      - renovate.json
+      - .github/renovate.json5
+      - .github/renovate.json
+      - .github/workflows/renovate.yml
   pull_request:
     branches: ["main"]
-    paths: [renovate.json5]
+    paths: 
+      - renovate.json5
+      - renovate.json
+      - .github/renovate.json5
+      - .github/renovate.json
+      - .github/workflows/renovate.yml
 
 permissions:
   contents: read
@@ -17,9 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
+
+      - name: Cache npm packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npx-renovate
 
       - name: Validate Renovate configuration
         run: npx --yes --package renovate -- renovate-config-validator
