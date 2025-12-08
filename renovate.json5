@@ -3,6 +3,7 @@
   extends: [
     'config:best-practices',
     ':automergeAll',
+    ':semanticCommits'
   ],
   rebaseWhen: 'conflicted',
   schedule: [
@@ -24,7 +25,7 @@
   separateMajorMinor: true,
   separateMultipleMajor: true,
   separateMinorPatch: true,
-  minimumReleaseAge: '3 days',
+  minimumReleaseAge: '1 day',
   vulnerabilityAlerts: {
     enabled: true,
     labels: [
