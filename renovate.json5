@@ -26,6 +26,7 @@
   separateMultipleMajor: true,
   separateMinorPatch: true,
   minimumReleaseAge: '1 day',
+  cloneSubmodules: true,
   vulnerabilityAlerts: {
     enabled: true,
     labels: [
