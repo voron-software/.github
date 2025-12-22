@@ -9,7 +9,6 @@
     ':separatePatchReleases',
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
-    'helpers:githubDigestChangelogs',
     'preview:dockerCompose',
     'preview:buildkite',
     'replacements:all',
