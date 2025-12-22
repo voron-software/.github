@@ -3,7 +3,14 @@
   extends: [
     'config:best-practices',
     ':automergeAll',
-    ':semanticCommits'
+    ':semanticCommits',
+    'helpers:pinGitHubActionDigests',
+    'helpers:pinGitHubActionDigestsToSemver',
+    'helpers:githubDigestChangelogs',
+    'abandonments:recommended',
+    'preview:dockerCompose',
+    'preview:buildkite',
+    'replacements:all',
   ],
   rebaseWhen: 'conflicted',
   schedule: [
