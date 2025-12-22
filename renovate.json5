@@ -3,13 +3,17 @@
   extends: [
     'config:best-practices',
     ':automergeAll',
+    ':automergePr',
     ':semanticCommits',
-    'abandonments:recommended',
+    ':separateMultipleMajorReleases',
+    ':separatePatchReleases',
+    'docker:pinDigests',
+    'helpers:pinGitHubActionDigestsToSemver',
+    'helpers:githubDigestChangelogs',
     'preview:dockerCompose',
     'preview:buildkite',
     'replacements:all',
-    'helpers:pinGitHubActionDigestsToSemver',
-    'helpers:githubDigestChangelogs',
+    'security:openssf-scorecard',
   ],
   rebaseWhen: 'conflicted',
   schedule: [
@@ -28,10 +32,6 @@
     '{{manager}}',
     '{{updateType}}'
   ],
-  separateMajorMinor: true,
-  separateMultipleMajor: true,
-  separateMinorPatch: true,
-  minimumReleaseAge: '1 day',
   internalChecksFilter: 'strict',
   cloneSubmodules: true,
   vulnerabilityAlerts: {
@@ -46,16 +46,6 @@
         'cargo',
       ],
       rangeStrategy: 'replace',
-    },
-    {
-      matchManagers: [
-        'github-actions',
-      ],
-      minimumReleaseAge: null,
-      matchSourceUrls: [
-        'https://github.com/github/{/,}**',
-        'https://github.com/actions/{/,}**',
-      ],
     },
   ],
 }
