@@ -1,0 +1,15 @@
+name: Remove Dependabot if Renovate set up
+description: If renovate.json is present, delete .github/dependabot.yml
+
+conditions:
+  - type: or
+    conditions:
+      - type: file_exists
+        path: .github/renovate.json
+      - type: file_exists
+        path: .github/renovate.json5
+
+actions:
+  - type: delete_file
+    path: .github/dependabot.yml
+    message: "Remove dependabot.yml (using Renovate instead)"
