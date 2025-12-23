@@ -10,6 +10,10 @@
               path: .github/renovate.json
           - file_exists:
               path: .github/renovate.json5
+          - file_exists:
+              path: renovate.json
+          - file_exists:
+              path: renovate.json5
 
   actions:
     - type: delete_file
