@@ -3,14 +3,15 @@ description: If renovate.json is present, delete .github/dependabot.yml
 
 conditions:
   - type: and
-    - type: file_exists
-      path: .github/dependabot.yml
-    - type: or
-      conditions:
-        - type: file_exists
-          path: .github/renovate.json
-        - type: file_exists
-          path: .github/renovate.json5
+    conditions:
+      - type: file_exists
+        path: .github/dependabot.yml
+      - type: or
+        conditions:
+          - type: file_exists
+            path: .github/renovate.json
+          - type: file_exists
+            path: .github/renovate.json5
 
 actions:
   - type: delete_file
