@@ -1,0 +1,16 @@
+name: Move Renovate config to .github directory
+description: If renovate.json exists in root, move it to .github/renovate.json5
+
+conditions:
+  - type: and
+    conditions:
+      - type: file_exists
+        path: renovate.json
+      - type: file_not_exists
+        path: .github/renovate.json5
+
+actions:
+  - type: move_file
+    from: renovate.json
+    to: .github/renovate.json5
+    message: "Move Renovate config to .github directory"
