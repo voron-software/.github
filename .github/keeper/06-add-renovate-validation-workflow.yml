@@ -7,14 +7,14 @@ condition:
         file_exists:
           path: .github/workflows/renovate.yml
     - or:
-      - file_exists:
-          path: renovate.json
-      - file_exists:
-          path: renovate.json5
-      - file_exists:
-          path: .github/renovate.json
-      - file_exists:
-          path: .github/renovate.json5
+        - file_exists:
+            path: renovate.json
+        - file_exists:
+            path: renovate.json5
+        - file_exists:
+            path: .github/renovate.json
+        - file_exists:
+            path: .github/renovate.json5
 
 actions:
   - type: create_file

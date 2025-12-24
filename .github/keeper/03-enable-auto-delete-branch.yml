@@ -3,9 +3,9 @@ description: Automatically delete head branches after PRs are merged
 
 condition:
   not:
-    - repo_setting:
-        setting: delete_branch_on_merge
-        value: true
+    repo_setting:
+      setting: delete_branch_on_merge
+      value: true
 
 actions:
   - type: update_repo_settings

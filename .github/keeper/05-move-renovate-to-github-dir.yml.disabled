@@ -2,7 +2,7 @@ name: Move Renovate config to .github directory
 description: If renovate.json exists in root, move it to .github/renovate.json5
 
 condition:
-  - and:
+  and:
     - file_exists:
         path: renovate.json
     - not:

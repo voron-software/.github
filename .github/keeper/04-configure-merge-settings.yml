@@ -3,16 +3,16 @@ description: Allow only squash merges
 
 condition:
   or:
-  - not:
-      - repo_setting:
+    - not:
+        repo_setting:
           setting: allow_merge_commit
           value: false
-  - not:
-      - repo_setting:
+    - not:
+        repo_setting:
           setting: allow_squash_merge
           value: true
-  - not:
-      - repo_setting:
+    - not:
+        repo_setting:
           setting: allow_rebase_merge
           value: false
 
