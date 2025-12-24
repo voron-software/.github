@@ -1,15 +1,20 @@
 name: Add Renovate validation workflow
 description: Create a GitHub Actions workflow to validate Renovate configuration
 
-conditions:
-  - type: or
-    conditions:
-      - type: file_exists
-        path: renovate.json
-      - type: file_exists
-        path: .github/renovate.json
-      - type: file_exists
-        path: .github/renovate.json5
+condition:
+  - and:
+    - not:
+        file_exists:
+          path: .github/workflows/renovate.yml
+    - or:
+      - file_exists:
+          path: renovate.json
+      - file_exists:
+          path: renovate.json5
+      - file_exists:
+          path: .github/renovate.json
+      - file_exists:
+          path: .github/renovate.json5
 
 actions:
   - type: create_file

@@ -1,10 +1,9 @@
 name: Create Renovate config
 description: Create renovate.json with default configuration for repos that don't have it (excluding .github repo)
 
-conditions:
-  - type: and
-    conditions:
-      - type: file_not_exists
+condition:
+  - and:
+      - now: file_not_exists
         path: renovate.json
       - type: file_not_exists
         path: .github/renovate.json

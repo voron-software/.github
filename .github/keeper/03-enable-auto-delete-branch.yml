@@ -1,7 +1,11 @@
 name: Enable auto-delete branch on merge
 description: Automatically delete head branches after PRs are merged
 
-conditions: []
+condition:
+- not:
+    - repo_setting:
+        setting: delete_branch_on_merge
+        value: true
 
 actions:
   - type: update_repo_settings

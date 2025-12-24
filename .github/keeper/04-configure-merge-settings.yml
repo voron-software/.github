@@ -1,11 +1,24 @@
 name: Configure merge settings
-description: Disable merge commits and enable squash merge for PRs
+description: Allow only squash merges
 
-conditions: []
+condition:
+- or:
+  - not:
+      - repo_setting:
+          setting: allow_merge_commit
+          value: false
+  - not:
+      - repo_setting:
+          setting: allow_squash_merge
+          value: true
+  - not:
+      - repo_setting:
+          setting: allow_rebase_merge
+          value: false
 
 actions:
   - type: update_repo_settings
     settings:
       allow_merge_commit: false
       allow_squash_merge: true
-      allow_rebase_merge: true
+      allow_rebase_merge: false
