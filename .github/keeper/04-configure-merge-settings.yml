@@ -2,7 +2,7 @@ name: Configure merge settings
 description: Allow only squash merges
 
 condition:
-- or:
+  or:
   - not:
       - repo_setting:
           setting: allow_merge_commit

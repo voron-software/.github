@@ -2,7 +2,7 @@ name: Add Renovate validation workflow
 description: Create a GitHub Actions workflow to validate Renovate configuration
 
 condition:
-  - and:
+  and:
     - not:
         file_exists:
           path: .github/workflows/renovate.yml
