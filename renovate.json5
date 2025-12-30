@@ -55,5 +55,16 @@
       ],
       pinDigests: false,
     },
+    {
+      matchManagers: [
+        'github-actions',
+      ],
+      matchPackageNames: [
+        'taiki-e/install-action',
+      ],
+      extends: [
+        'schedule:weekly',
+      ],
+    },
   ],
 }
