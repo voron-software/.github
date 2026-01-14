@@ -12,15 +12,10 @@
     'preview:dockerCompose',
     'preview:buildkite',
     'replacements:all',
-    'security:openssf-scorecard',
+    'schedule:weekly',
+    ':maintainLockFilesWeekly',
   ],
   rebaseWhen: 'conflicted',
-  schedule: [
-    'at any time',
-  ],
-  lockFileMaintenance: {
-    enabled: true,
-  },
   prConcurrentLimit: 0,
   prHourlyLimit: 0,
   major: {
@@ -29,7 +24,6 @@
   addLabels: [
     'dependencies',
     '{{manager}}',
-    '{{updateType}}'
   ],
   internalChecksFilter: 'strict',
   cloneSubmodules: true,
@@ -54,17 +48,6 @@
         'elquentaro/devcontainer',
       ],
       pinDigests: false,
-    },
-    {
-      matchManagers: [
-        'github-actions',
-      ],
-      matchPackageNames: [
-        'taiki-e/install-action',
-      ],
-      extends: [
-        'schedule:weekly',
-      ],
     },
   ],
 }
