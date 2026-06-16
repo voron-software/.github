@@ -64,7 +64,7 @@
       matchPackageNames: ['tonic**'],
       groupName: 'tonic crates',
       groupSlug: 'tonic',
-    },,
+    },
     {
       description: 'Group Datafusion crates',
       matchManagers: ['cargo'],
