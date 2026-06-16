@@ -49,5 +49,21 @@
       ],
       pinDigests: false,
     },
+    {
+      description: 'Group Prost release-train crates',
+      matchManagers: ['cargo'],
+      matchDatasources: ['crate'],
+      matchPackageNames: ['prost**'],
+      groupName: 'prost crates',
+      groupSlug: 'prost',
+    },
+    {
+      description: 'Group Tonic release-train crates',
+      matchManagers: ['cargo'],
+      matchDatasources: ['crate'],
+      matchPackageNames: ['tonic**'],
+      groupName: 'tonic crates',
+      groupSlug: 'tonic',
+    },
   ],
 }
