@@ -50,7 +50,7 @@
       pinDigests: false,
     },
     {
-      description: 'Group Prost release-train crates',
+      description: 'Group Prost crates',
       matchManagers: ['cargo'],
       matchDatasources: ['crate'],
       matchPackageNames: ['prost**'],
@@ -58,12 +58,20 @@
       groupSlug: 'prost',
     },
     {
-      description: 'Group Tonic release-train crates',
+      description: 'Group Tonic crates',
       matchManagers: ['cargo'],
       matchDatasources: ['crate'],
       matchPackageNames: ['tonic**'],
       groupName: 'tonic crates',
       groupSlug: 'tonic',
+    },
+    {
+      description: 'Group Datafusion crates',
+      matchManagers: ['cargo'],
+      matchDatasources: ['crate'],
+      matchPackageNames: ['datafusion**'],
+      groupName: 'datafusion crates',
+      groupSlug: 'datafusion',
     },
   ],
 }
