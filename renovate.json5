@@ -12,8 +12,8 @@
     'preview:dockerCompose',
     'preview:buildkite',
     'replacements:all',
-    'schedule:weekly',
-    ':maintainLockFilesWeekly',
+    'schedule:monthly',
+    ':maintainLockFilesMonthly',
   ],
   rebaseWhen: 'conflicted',
   prConcurrentLimit: 0,
@@ -29,10 +29,13 @@
   cloneSubmodules: true,
   vulnerabilityAlerts: {
     enabled: true,
+    // Security fixes must not wait for the monthly window.
+    schedule: [],
     labels: [
       'security',
     ],
   },
+  osvVulnerabilityAlerts: true,
   packageRules: [
     {
       matchManagers: [
