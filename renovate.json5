@@ -69,10 +69,10 @@
       groupSlug: 'tonic',
     },
     {
-      description: 'Group Datafusion crates',
+      description: 'Group Datafusion, arrow-rs and object_store crates (they must move in lockstep)',
       matchManagers: ['cargo'],
       matchDatasources: ['crate'],
-      matchPackageNames: ['datafusion**'],
+      matchPackageNames: ['datafusion**', 'arrow**', 'parquet', 'object_store'],
       groupName: 'datafusion crates',
       groupSlug: 'datafusion',
     },
