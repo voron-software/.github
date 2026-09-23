@@ -16,7 +16,7 @@
     ':maintainLockFilesWeekly',
   ],
   rebaseWhen: 'conflicted',
-  prConcurrentLimit: 0,
+  prConcurrentLimit: 5,
   prHourlyLimit: 0,
   major: {
     dependencyDashboardApproval: false,
