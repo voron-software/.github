@@ -14,6 +14,7 @@
     'replacements:all',
     'schedule:weekly',
     ':maintainLockFilesWeekly',
+    'group:all',
   ],
   rebaseWhen: 'conflicted',
   prConcurrentLimit: 5,
