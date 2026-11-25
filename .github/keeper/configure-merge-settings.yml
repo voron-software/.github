@@ -1,0 +1,34 @@
+name: Configure merge settings
+description: Allow only squash merges, titled and described by the pull request
+
+condition:
+  or:
+    - not:
+        repo_setting_equals:
+          setting: allow_merge_commit
+          value: false
+    - not:
+        repo_setting_equals:
+          setting: allow_squash_merge
+          value: true
+    - not:
+        repo_setting_equals:
+          setting: allow_rebase_merge
+          value: false
+    - not:
+        repo_setting_equals:
+          setting: squash_merge_commit_title
+          value: PR_TITLE
+    - not:
+        repo_setting_equals:
+          setting: squash_merge_commit_message
+          value: PR_BODY
+
+actions:
+  - update_repo_settings:
+      settings:
+        allow_merge_commit: false
+        allow_squash_merge: true
+        allow_rebase_merge: false
+        squash_merge_commit_title: PR_TITLE
+        squash_merge_commit_message: PR_BODY
