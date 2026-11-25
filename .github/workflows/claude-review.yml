@@ -40,6 +40,9 @@ jobs:
         # Same reason as the review step: a GitHub API hiccup here must not block merging. The
         # output stays empty, so the review is skipped and retried on the next push.
         continue-on-error: true
+        # Explicit bash means `-eo pipefail`: a failed `gh api` must fail the step, not reach awk,
+        # which would print 0 and start a second paid review.
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
