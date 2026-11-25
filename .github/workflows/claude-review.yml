@@ -6,27 +6,56 @@ name: Claude Review
 # updated first, and a PR branch cannot reuse the identity with a workflow of its own.
 
 on:
+  # A ruleset ignores `types:` and runs this only on opened, synchronize and reopened, so no
+  # filter here; whether to review is decided at runtime by the gate job.
   pull_request:
-    # synchronize is listed only so every head commit gets a passing run of this required
-    # workflow; the review job itself skips it to keep cost to one review per PR.
-    types: [opened, reopened, ready_for_review, synchronize]
 
 permissions: {}
 
+# Queue instead of cancel: a push during a review must not cancel the only review attempt. The
+# queued run then sees the finished review and skips.
 concurrency:
   group: claude-review-${{ github.repository }}-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  review:
-    name: Review
+  gate:
+    name: Gate
     # Forks get no OIDC token, bots (Renovate) would spend most of the monthly credit, and drafts
-    # are reviewed once they are marked ready.
+    # are reviewed on the first push after they are marked ready (ready_for_review never reaches
+    # a ruleset workflow).
     if: >-
-      github.event.action != 'synchronize' &&
       !github.event.pull_request.draft &&
       github.event.pull_request.user.type != 'Bot' &&
       github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
+    outputs:
+      review: ${{ steps.check.outputs.review }}
+    steps:
+      - name: Check for a completed review
+        id: check
+        # Same reason as the review step: a GitHub API hiccup here must not block merging. The
+        # output stays empty, so the review is skipped and retried on the next push.
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        # One review per PR keeps cost within the monthly credit. Only the marker that the review
+        # prompt asks for counts, so a failed or cancelled attempt is retried on the next push.
+        run: |
+          done=$(gh api --paginate "repos/$REPO/issues/$PR/comments" \
+            --jq '[.[] | select(.user.type == "Bot" and (.body | contains("<!-- claude-review:done -->")))] | length' \
+            | awk '{s += $1} END {print s + 0}')
+          if [ "$done" -gt 0 ]; then echo "review=false" >> "$GITHUB_OUTPUT"; else echo "review=true" >> "$GITHUB_OUTPUT"; fi
+
+  review:
+    name: Review
+    needs: gate
+    if: needs.gate.outputs.review == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -61,7 +90,8 @@ jobs:
             nits and anything a linter or formatter would catch.
 
             Post each finding as an inline comment on the line it concerns. Finish with one short
-            summary comment; if there are no findings, say so in one line.
+            summary comment; if there are no findings, say so in one line. End the summary comment with
+            the line <!-- claude-review:done --> exactly once; post it only after the review is complete.
           claude_args: |
             --model claude-opus-5-5
             --max-turns 40
