@@ -52,6 +52,8 @@ jobs:
           anthropic_federation_rule_id: fdrl_01KfnbUdSDHcC278wVsGvkGF
           anthropic_service_account_id: svac_014xjuiLAzbiEbcdvmhikCdW
           use_sticky_comment: true
+          # TEMPORARY: the first runs fail in under a second with no error in the log; revert once diagnosed.
+          show_full_output: true
           prompt: |
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ github.event.pull_request.number }}
